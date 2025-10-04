@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio Mahasiswa Teknik Informatika — pastel pink & white, modern, responsive." />
+  <title>Portfolio | Mahasiswa Teknik Informatika</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --pink-25:#FFFCFE;
+      --pink-50:#FFF7FB;
+      --pink-100:#FDECF3;
+      --pink-200:#FFD6E7;
+      --pink-300:#FFBFD7;
+      --pink-500:#FF7FB1;
+      --rose-500:#F43F5E;
+      --magenta:#FF3EA5;
+      --gray-500:#6B7280;
+      --gray-700:#374151;
+      --gray-900:#0F172A;
+      --white:#ffffff;
+      --shadow: 0 10px 30px rgba(244,63,94,.15);
+      --radius: 20px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;color:var(--gray-900);background:var(--pink-25);}
+    a{color:inherit;text-decoration:none}
+
+    .bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:radial-gradient(1200px 800px at 10% -10%, rgba(255,191,215,.45), transparent 60%),radial-gradient(1000px 700px at 90% 10%, rgba(253,236,243,.8), transparent 60%),linear-gradient(180deg, var(--pink-50), var(--white));animation:bgShift 18s ease-in-out infinite alternate;}
+    @keyframes bgShift{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(-8deg)}}
+
+    .blob{position:fixed;filter:blur(16px);opacity:.5;border-radius:50%;z-index:-1}
+    .blob.one{width:360px;height:360px;left:-120px;top:-80px;background:radial-gradient(circle at 30% 30%,var(--pink-300),transparent 60%);animation:float 16s ease-in-out infinite}
+    .blob.two{width:280px;height:280px;right:-80px;top:120px;background:radial-gradient(circle at 70% 70%,var(--pink-200),transparent 55%);animation:float 20s ease-in-out infinite reverse}
+    .blob.three{width:320px;height:320px;left:40%;bottom:-120px;background:radial-gradient(circle at 50% 50%,#ffe0ef,transparent 60%);animation:float 22s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-18px) translateX(8px)}100%{transform:translateY(0) translateX(0)}}
+
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:999px;font-weight:700;letter-spacing:.2px;transition:.25s box-shadow,.25s transform,.25s filter;background:linear-gradient(90deg,var(--pink-300),var(--pink-500));color:white;box-shadow:0 12px 30px rgba(244,63,94,.35)}
+    .btn:hover{transform:translateY(-3px);filter:saturate(1.05);box-shadow:0 16px 40px rgba(244,63,94,.45)}
+    .btn--ghost{background:rgba(255,255,255,.7);color:var(--gray-900);border:1px solid var(--pink-200);box-shadow:var(--shadow)}
+
+    .chip{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .9rem;border-radius:999px;background:var(--pink-100);border:1px solid var(--pink-200);font-size:.95rem;font-weight:600}
+
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(14px);background:rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.7);z-index:10}
+    nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+    nav .brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
+    nav .brand .logo{width:32px;height:32px;border-radius:10px;background:conic-gradient(from 180deg at 50% 50%, var(--pink-500), #ffd6e7, var(--pink-300));box-shadow:var(--shadow)}
+    nav ul{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+    nav li a{padding:.6rem 1rem;border-radius:999px}
+    nav li a:hover{background:var(--pink-100)}
+
+    .hero{position:relative;padding:96px 0 72px;display:flex;align-items:center;justify-content:center}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+    .hero h1{font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.05;margin:0 0 .6rem;font-weight:800}
+    .hero h1 .fancy{font-family:"Playfair Display", serif; font-weight:700; letter-spacing:.3px; background:linear-gradient(90deg,var(--magenta),var(--pink-500));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero .subtitle{font-size:1.1rem;color:var(--gray-700);min-height:2.2em}
+    .cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.4rem}
+
+    .hero-card{background:rgba(255,255,255,.7);border:1px solid #fff;border-radius:24px;box-shadow:0 20px 40px rgba(244,63,94,.15);padding:1.2rem}
+    .tools{display:flex;flex-wrap:wrap;gap:.6rem}
+    .photo-frame{width:260px;height:260px;border-radius:50%;overflow:hidden;box-shadow:0 10px 25px rgba(244,63,94,.25);border:4px solid var(--white);background:linear-gradient(135deg,var(--pink-200),var(--pink-50));display:flex;align-items:center;justify-content:center;margin:auto}
+    .photo-frame img{width:100%;height:100%;object-fit:cover}
+
+    section{padding:60px 0}
+    .section-title{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+    .section-title .dot{width:10px;height:10px;border-radius:50%;background:var(--rose-500)}
+
+    form{display:grid;gap:.9rem}
+    input,textarea{padding:1rem 1.1rem;border-radius:16px;border:1px solid var(--pink-200);background:var(--pink-50);font:inherit}
+    input:focus,textarea:focus{outline:none;border-color:var(--pink-500);box-shadow:0 0 0 4px rgba(255,127,177,.15)}
+
+    footer{padding:38px 0;color:var(--gray-700)}
+
+    @media (max-width: 900px){.hero-grid{grid-template-columns:1fr}.photo-frame{width:200px;height:200px}}
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <span class="blob one"></span>
+  <span class="blob two"></span>
+  <span class="blob three"></span>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <span class="logo" aria-hidden="true"></span>
+          <span>Portofolio Ronazyaa</span>
+        </div>
+        <ul>
+          <li><a href="#skills">Skill</a></li>
+          <li><a href="#about">Tentang</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="chip">👩🏻‍💻 Mahasiswa Teknik Informatika</span>
+        <h1>Annyeong, aku <span class="fancy">Rona</span></h1>
+        <p class="subtitle">Menyukai web dev, data, & UI yang manis.</p>
+        <div class="cta">
+          <a class="btn" href="mailto:ronaziya19@gmail.com">📧 Email</a>
+          <a class="btn btn--ghost" href="https://www.instagram.com/ronazyaaa_?igsh=c3F5M25qZHk1d2Ru&utm_source=qr" target="_blank">📷 Instagram</a>
+          <a class="btn btn--ghost" href="https://github.com/Ronazyaa" target="_blank">🐙 GitHub</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:1.2rem">
+        <div class="photo-frame">
+          <!-- Ganti src berikut dengan foto profesional kamu -->
+          <img src="Ronaziya.jpg" alt="Foto Profesional Rona" />
+        </div>
+        <div class="hero-card">
+          <div class="tools">
+            <span class="chip">HTML5</span>
+            <span class="chip">CSS3</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-title"><span class="dot"></span><h2>Skill & Teknologi</h2></div>
+      <div class="card" style="padding:1.5rem;background:rgba(255,255,255,.7);border-radius:20px;box-shadow:var(--shadow)">
+        <p>HTML5 • CSS3 • JavaScript (ES6) • Git • GitHub • SQL (Basic)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-title"><span class="dot"></span><h2>Tentang Saya</h2></div>
+      <div class="card" style="padding:1.5rem;background:rgba(255,255,255,.7);border-radius:20px;box-shadow:var(--shadow)">
+        <p>Saya adalah mahasiswa Teknik Informatika yang selalu tertarik dengan dunia teknologi dan inovasi digital. Saya suka bereksperimen dengan berbagai framework, tools, dan bahasa pemrograman untuk menciptakan solusi yang cepat, efisien, dan impactful. Bagi saya, menjadi bagian dari dunia IT berarti terus berkembang, beradaptasi, dan berani mencoba hal baru. Saat ini saya fokus mengembangkan kemampuan di bidang web development, UI/UX, dan analisis data, sambil membangun proyek-proyek mini yang dapat memberikan manfaat nyata bagi pengguna.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title"><span class="dot"></span><h2>Kontak</h2></div>
+      <div class="card" style="padding:1.5rem;background:rgba(255,255,255,.7);border-radius:20px;box-shadow:var(--shadow)">
+        <form action="https://formspree.io/f/your-id" method="POST">
+          <input type="text" name="name" placeholder="Nama" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="message" rows="5" placeholder="Pesan" required></textarea>
+          <button class="btn" type="submit">Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <small>© <span id="year"></span> Rona — Dibuat dengan ♥ pakai HTML & CSS.</small>
+      <small><a href="#top">Kembali ke atas ↑</a></small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
